@@ -1,0 +1,84 @@
+---
+title: "OBGYN Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r setup, packages}
+install.packages("tidyverse")
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+
+```{r}
+Pre_Post_Data_OB_7_1 %>% 
+  group_by(mode_of_delivery)
+  summarise(avg = mean(viable))
+```
+
+```{r term and viability}
+Pre_Post_Data_OB_7_1%>% 
+  group_by(full_term, viable) %>% 
+  count()
+```
+
+```{r term and c-section}
+Pre_Post_Data_OB_7_1%>% 
+  group_by(full_term, mode_of_delivery) %>% 
+  count()
+```
+
+```{r}
+Pre_Post_Data_OB_7_1 %>% 
+  group_by(vaginal_status) %>% 
+  count()
+```
+
+```{r}
+Pre_Post_Data_OB_7_1%>% 
+  group_by(mode_of_delivery, companion) %>% 
+  count()
+```
+
+
+
+```{r}
+Pre_Post_Data_OB_7_1 %>% 
+  group_by(companion) %>% 
+  count()
+```
+
+```{r}
+Pre_Post_Data_OB_7_1 %>% 
+  group_by(complication) %>% 
+  count()
+```
+```{r}
+Pre_Post_Data_OB_7_1 %>% 
+  group_by(mode_of_delivery, complications) %>% 
+  count()
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
