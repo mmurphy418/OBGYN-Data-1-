@@ -1,0 +1,6 @@
+complications <- OBGYN_Patient_Questionnaires_ %>%
+  mutate(complication = case_when(complication != "N" ~ "Yes", 
+                                  complication == "N" ~ "No"))
+
+chisq.test(table(complications$complication, 
+                complications$mode_of_delivery))
