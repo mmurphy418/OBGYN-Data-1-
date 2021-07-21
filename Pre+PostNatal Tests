@@ -4,3 +4,6 @@ complications <- OBGYN_Patient_Questionnaires_ %>%
 
 chisq.test(table(complications$complication, 
                 complications$mode_of_delivery))
+
+chisq.test(table(OBGYN_Patient_Questionnaires_$prenatal_vitamins, 
+                OBGYN_Patient_Questionnaires_$vitamins_provided))
